@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>广东省分公司非车险培训行业指导手册</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">内部培训资料网页整理版 · 2026</p>
+        <h1>广东省分公司非车险培训行业指导手册</h1>
+      </div>
+      <div class="toolbar">
+        <label class="search">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="输入险种、资料、红线、再保术语..." />
+        </label>
+        <button id="printBtn" type="button">打印/导出 PDF</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <nav class="sidebar" aria-label="手册目录">
+        <div class="nav-title">目录</div>
+        <a href="#overview">使用导览</a>
+        <a href="#chapter-products">01 非车险产品体系</a>
+        <a href="#product-map">产品分类总览</a>
+        <a href="#chapter-reinsurance">02 再保险机制与应用</a>
+        <a href="#chapter-lines">03 核心险种深度剖析</a>
+        <a href="#property">企业财产保险</a>
+        <a href="#engineering">工程保险</a>
+        <a href="#employer">雇主责任险</a>
+        <a href="#group-accident">团体意外险</a>
+        <a href="#workflow">承保作业流程</a>
+        <a href="#sources">资料来源</a>
+      </nav>
+
+      <main>
+        <section id="overview" class="hero section searchable">
+          <div>
+            <p class="eyebrow">Manual version</p>
+            <h2>从“培训课件”整理为“可检索的业务手册”</h2>
+            <p>
+              本网页基于原 PPT 43 页内容整理，并在每个框架下补充监管依据、承保实务、资料清单和风控提示。
+              结构按“产品认知 - 再保险能力 - 核心险种承保政策 - 实务流程”展开，方便新人培训、业务复盘和日常查询。
+            </p>
+            <p class="author">作者：毛宁</p>
+          </div>
+          <dl class="stats">
+            <div><dt>3</dt><dd>主章节</dd></div>
+            <div><dt>9</dt><dd>产品大类</dd></div>
+            <div><dt>4</dt><dd>重点险种</dd></div>
+            <div><dt>4</dt><dd>红线清单</dd></div>
+          </dl>
+        </section>
+
+        <section class="section searchable">
+          <h2>手册阅读方法</h2>
+          <div class="grid three">
+            <article class="card">
+              <h3>先看业务边界</h3>
+              <p>非车险标的覆盖企业资产、责任、工程、船舶、货运、信用保证、意外健康等，风险形态比车险更分散。</p>
+            </article>
+            <article class="card">
+              <h3>再看再保能力</h3>
+              <p>承保前确认危险单位、毛自留额、净自留额、合约期限、合约限额和共保身份，避免超权限承保。</p>
+            </article>
+            <article class="card">
+              <h3>最后按险种核保</h3>
+              <p>企财险、工程险、雇主责任险、团体意外险分别设置鼓励、谨慎、禁止承保边界，并匹配询价资料。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="chapter-products" class="chapter section searchable">
+          <span class="chapter-number">01</span>
+          <h2>非车险产品体系</h2>
+          <p class="lead">坚持审慎原则，强化风险管控，实现可持续经营发展。</p>
+
+          <div class="compare">
+            <article>
+              <h3>非车险业务特征</h3>
+              <ul>
+                <li>保险标的广泛多元，涵盖财产、责任、信用、短期人身等多个领域。</li>
+                <li>风险特征复杂多样，非标准化程度高，需要专业风险评估和定制化定价。</li>
+                <li>产品灵活性强，可根据客户场景组合设计，满足细分市场保障需求。</li>
+              </ul>
+            </article>
+            <article>
+              <h3>车险业务特征</h3>
+              <ul>
+                <li>保险标的相对单一，聚焦机动车辆及相关责任。</li>
+                <li>风险更标准化，历史数据充分，精算定价模型更成熟稳定。</li>
+                <li>条款标准化程度高，创新空间相对有限。</li>
+              </ul>
+            </article>
+          </div>
+
+          <aside class="note">
+            <strong>行业补充：</strong>非车险的核心不是“多卖几个险种”，而是围绕客户资产、运营责任、工程周期、供应链和人员风险，形成场景化风险解决方案。监管导向强调依法合规经营、真实风险转移、控制费用和提升服务能力，业务拓展应与风险识别、再保安排和理赔服务能力同步。
+          </aside>
+        </section>
+
+        <section id="product-map" class="section searchable">
+          <h2>产品分类总览</h2>
+          <div class="product-grid">
+            <article class="product">
+              <h3>企业财产险</h3>
+              <p>保障厂房、设备、原材料、库存等固定与流动资产因自然灾害或意外事故导致的损失。</p>
+              <p class="muted">包括财产基本险、综合险、一切险、机损险、现金险、营业中断险、个体工商户财产险、工程机械设备保险。</p>
+            </article>
+            <article class="product">
+              <h3>责任险</h3>
+              <p>以被保险人对第三者依法应负的民事赔偿责任为保险标的。</p>
+              <p class="muted">包括产品责任、公众责任、医疗责任、安全生产责任、工程质量潜在缺陷责任、雇主责任、食品安全责任、环境污染责任等。</p>
+            </article>
+            <article class="product">
+              <h3>工程险</h3>
+              <p>承保建筑、安装工程本身的物质损失，以及施工造成的第三者责任。</p>
+              <p class="muted">主要为建筑工程一切险、安装工程一切险。</p>
+            </article>
+            <article class="product">
+              <h3>船舶险</h3>
+              <p>承保船舶航行或停泊期间因自然灾害、意外事故造成的物质损失及相关责任。</p>
+              <p class="muted">包括沿海内河船舶险、船东保赔责任险、船舶污染责任险等。</p>
+            </article>
+            <article class="product">
+              <h3>货物运输险</h3>
+              <p>以运输中的货物为标的，补偿运输途中因自然灾害或意外事故造成的损失。</p>
+              <p class="muted">包括公路、水路、陆路、进口、铁路货运及随车行李财产损失险。</p>
+            </article>
+            <article class="product">
+              <h3>家庭财产险</h3>
+              <p>保障居民房屋主体、装修、家具家电等家庭有形财产损失。</p>
+              <p class="muted">包括家庭财产综合险、个人账户资金安全险、个人旅行延误险。</p>
+            </article>
+            <article class="product">
+              <h3>信用保证险</h3>
+              <p>以信用风险为标的，保障债务人违约或不履约造成的经济损失。</p>
+              <p class="muted">包括采购合同履约、工程履约/预付款/质量保证、售电履约、投标保证、国内贸易短期信用险、应收账款信用险等。</p>
+            </article>
+            <article class="product">
+              <h3>意外险</h3>
+              <p>以外来的、突发的、非本意的、非疾病的意外伤害导致身故、伤残或医疗费用为给付条件。</p>
+              <p class="muted">包括个人/团体意外、交通工具、旅行、驾乘、学生幼儿、建筑施工人员等。</p>
+            </article>
+            <article class="product">
+              <h3>健康险</h3>
+              <p>以被保险人的身体为标的，对疾病或意外事故导致的费用支出或损失进行补偿。</p>
+              <p class="muted">包括个人/团体医疗、重大疾病、女性安康、手术意外、职工团体补充医疗等。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="chapter-reinsurance" class="chapter section searchable">
+          <span class="chapter-number">02</span>
+          <h2>再保险机制与应用</h2>
+          <p class="lead">再保险是风险分散与财务稳定的基石。</p>
+
+          <div class="grid two">
+            <article class="card">
+              <h3>比例再保险</h3>
+              <p>按保险金额的一定比例分担责任和保费，常见为成数再保险、溢额再保险。</p>
+              <p class="muted">原保险公司与再保险公司按照约定比例共同分担保费和赔款，适用于需要稳定分散保额责任的业务。</p>
+            </article>
+            <article class="card">
+              <h3>非比例再保险</h3>
+              <p>以赔款金额为基础，赔款超过约定自负额或起赔点后，再保险人承担超出部分。</p>
+              <p class="muted">常见为超额赔款再保险，适合管理大额赔案、巨灾或波动性风险。</p>
+            </article>
+          </div>
+
+          <h3 class="subhead">关键术语</h3>
+          <div class="term-list">
+            <div><b>危险单位</b><span>一次保险事故可能造成最大损失的范围，是计算自留额和分保额的基础。</span></div>
+            <div><b>毛自留额</b><span>安排再保险前，原保险人对每一危险单位愿意承担的最高责任限额。</span></div>
+            <div><b>分出比例</b><span>成数合约中，原保险人将保险金额转让给再保险人的固定百分比。</span></div>
+            <div><b>净自留额</b><span>再保险安排后，原保险人最终实际承担的风险责任金额。</span></div>
+          </div>
+
+          <h3 class="subhead">PPT 合约要点整理</h3>
+          <table>
+            <thead>
+              <tr><th>项目</th><th>比例合约</th><th>非比例合约</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>合约期限</td><td>2026-01-01 至 2026-12-31；部分企财/工程为 2025-09-01 至 2026-12-31</td><td>2025-09-01 至 2026-08-31</td></tr>
+              <tr><td>适用险种</td><td>企财、工程、责任、水险、道路客运承运人责任、意外险等</td><td>沿海内河船东保障和赔偿责任保险等</td></tr>
+              <tr><td>成数合约</td><td>企财/工程毛自留额 6,000 万元，分出比例 40%；责任险毛自留额 1,000 万元，净自留额 600 万元</td><td>不适用</td></tr>
+              <tr><td>溢额合约</td><td>企财/工程 7 线，最大合约限额 70,000 万元；责任险 4 线，最大合约限额 4,000 万元</td><td>按赔款层级触发</td></tr>
+              <tr><td>自动承保能力</td><td>企财/工程 84,500 万元；股东专项 74,000 万元；责任险 4,400 万元</td><td>按非比例合约限额及起赔点核定</td></tr>
+            </tbody>
+          </table>
+
+          <aside class="note">
+            <strong>行业补充：</strong>再保险安排应与公司资本实力、偿付能力、风险集中度和巨灾暴露匹配。承保前要特别关注危险单位划分、同一地址/同一园区累计责任、共保角色、股东业务属性以及是否触及合约除外责任。
+          </aside>
+        </section>
+
+        <section id="chapter-lines" class="chapter section searchable">
+          <span class="chapter-number">03</span>
+          <h2>核心险种深度剖析</h2>
+          <p class="lead">风险为本，稳健经营。</p>
+        </section>
+
+        <section id="property" class="section searchable">
+          <h2>企业财产保险</h2>
+          <div class="grid two">
+            <article class="card">
+              <h3>险种定位</h3>
+              <p>保障企业固定资产和流动资产因自然灾害或意外事故造成的直接损失。基本险、综合险、一切险的保险责任由窄到宽。</p>
+            </article>
+            <article class="card">
+              <h3>询价资料</h3>
+              <ul>
+                <li>营业执照</li>
+                <li>投保财产清单明细，区分固定资产和流动资产</li>
+                <li>风险查勘照片、生产工艺流程图、企业规划总平面图</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="policy-board">
+            <article class="policy encourage">
+              <h3>鼓励承保</h3>
+              <p>一至三级工业及民用建筑、现代商业综合体、办公楼、学校、医院、博物馆、体育馆、三星及以上酒店、金融企业、事业机关、社会团体、大中型国企和外企、纯建筑物业务、金融抵押业务。</p>
+            </article>
+            <article class="policy caution">
+              <h3>谨慎承保</h3>
+              <p>中小型民营企业及商场、游乐场、室内娱乐、商品批发市场、无星级酒店、木材加工、胶合板、纸品、制鞋、化肥、食品添加剂、电路板、锂/蓄电池、物流仓储等。</p>
+            </article>
+            <article class="policy forbid">
+              <h3>禁止承保</h3>
+              <p>违章建筑、砖木/木结构或结构不明建筑、无正规报建或质量不合格建筑；六级工业、废品收购及加工、严重道德风险或逆选择企业、无可保利益标的、危险状态财产、矿井矿坑内设备物资等。</p>
+            </article>
+          </div>
+
+          <h3 class="subhead">建筑物等级识别</h3>
+          <div class="level-grid">
+            <div><b>一级防火建筑</b><span>钢筋混凝土主体、屋顶、墙体和地面，耐火能力最强。</span></div>
+            <div><b>二级不可燃性建筑</b><span>钢结构或砖混结构，预制板/石棉板/石膏板屋顶。</span></div>
+            <div><b>三级可燃性建筑</b><span>钢结构或重木质结构，耐火能力有限。</span></div>
+            <div><b>四级劣等建筑</b><span>木结构风险高，原则上应严控或禁止承保。</span></div>
+          </div>
+
+          <aside class="note">
+            <strong>行业补充：</strong>广东地区承保企财险时，应额外关注台风、暴雨、洪涝、内涝、雷电、沿海风暴潮和工业园区火灾集中风险。风险查勘建议覆盖排水系统、防火分区、消防设施维保、危险品存放、生产线自动化停机保护、历史损失记录和灾害预警期间突击投保情形。
+          </aside>
+        </section>
+
+        <section id="engineering" class="section searchable">
+          <h2>工程保险</h2>
+          <div class="grid two">
+            <article class="card">
+              <h3>险种定位</h3>
+              <p>保险期限通常按工期计算，自工程开工至竣工为止。建筑工程一切险和安装工程一切险均可扩展第三者责任。</p>
+            </article>
+            <article class="card">
+              <h3>询价资料</h3>
+              <ul>
+                <li>施工单位营业执照</li>
+                <li>完整工程合同，含工程名称、工期、造价、面积等</li>
+                <li>工程量清单、保额方案、附加条款、业务来源情况</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="policy-board">
+            <article class="policy encourage">
+              <h3>鼓励承保</h3>
+              <p>大中型工业企业新厂房及新设备工程、大型住宅群和商住楼宇、市政工程建筑安装工程、只保路面且不含路基的道路建工险。</p>
+            </article>
+            <article class="policy caution">
+              <h3>谨慎承保</h3>
+              <p>造纸、纤维板、家具、食品、饲料、水泥、玻璃、无机化工、电厂、五六级工业企业；机场、轨道交通大型设备吊装、高速公路、暴雨多发地区二级公路、采用最新技术项目、低资质设计施工单位项目。</p>
+            </article>
+            <article class="policy forbid">
+              <h3>禁止承保</h3>
+              <p>山区及洪涝区公路铁路、地震带工程、输变电线路、逢山开路遇水架桥、地下/爆破/拆除工程、二手设备试车、无资质或违规施工项目、境外业务、单独承保自然灾害或试车期、低于风险成本的恶性竞争业务。</p>
+            </article>
+          </div>
+
+          <h3 class="subhead">涉水与隧道工程管控</h3>
+          <table>
+            <tbody>
+              <tr><th>涉水工程</th><td>港口、码头、海堤、防浪堤、泄洪排洪、疏浚、填海造地、水下排水、船闸、涉水桥梁基础等。</td></tr>
+              <tr><th>隧道工程</th><td>地铁、铁路、公路隧道，地下输水管道、城市供水管道、电缆地下管道、引水洞、泄洪洞、坑道施工等。</td></tr>
+              <tr><th>管控标准</th><td>股东业务占比高于 40% 且低于 60%；非股东业务占比高于 20% 且低于 50% 时，应严格控制承保比例和条件。</td></tr>
+            </tbody>
+          </table>
+
+          <aside class="note">
+            <strong>行业补充：</strong>工程险核保的关键是“工期风险 + 自然灾害暴露 + 施工技术成熟度 + 参建方资质 + 第三者暴露”。建议对临近汛期、台风季、地下空间、深基坑、高边坡、临水临海和大型吊装项目设置更高免赔、分段查勘和防灾减损条件。
+          </aside>
+        </section>
+
+        <section id="employer" class="section searchable">
+          <h2>雇主责任险</h2>
+          <div class="grid two">
+            <article class="card">
+              <h3>险种定位</h3>
+              <p>保障雇主对雇员在受雇过程中因工作原因遭受意外或患职业病，依法应承担的经济赔偿责任。</p>
+              <p class="muted">它保的是企业依法赔偿责任，不等同于员工福利型团体意外险。</p>
+            </article>
+            <article class="card">
+              <h3>保障与合规</h3>
+              <ul>
+                <li>可覆盖工伤死亡/伤残、医疗费用、误工费用、法律诉讼费用。</li>
+                <li>根据监管要求，雇主责任险不论保额保费均不允许异地承保，需属地出单。</li>
+                <li>报行合一口径下，注意剔除不合规责任，可按规则附加上下班途中意外、职业病责任、第三者责任等。</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="policy-board">
+            <article class="policy encourage">
+              <h3>鼓励承保</h3>
+              <p>风险等级 1-3 级业务；文员及轻体力劳动人员；信息传输、软件、批发零售、银行保险证券、租赁和商务服务等低风险行业；职业类别 1-2 类业务。</p>
+            </article>
+            <article class="policy caution">
+              <h3>谨慎承保</h3>
+              <p>快递外卖、配送上门服务、跨市域物流运输、高温/低温/粉尘/辐射环境、金属冶炼、化工危险、特殊制造、安全管理制度不规范企业。</p>
+            </article>
+            <article class="policy forbid">
+              <h3>禁止承保</h3>
+              <p>高危化工、有毒有害爆炸物、液化气体、石油天然气钻探生产精炼、农药生产、有色金属冶炼压延、石棉相关、船舶建造修理拆解、码头装卸等高危行业。</p>
+            </article>
+          </div>
+
+          <aside class="note">
+            <strong>行业补充：</strong>雇主责任险应与《工伤保险条例》下的工伤认定逻辑保持一致，核保时重点核实行业、岗位、人数、职业类别、历史赔付、安全生产制度和劳务派遣比例。岗位名称低报高危岗位是高频争议点，人员清单应与劳动关系、工种和实际作业场景一致。
+          </aside>
+        </section>
+
+        <section id="group-accident" class="section searchable">
+          <h2>团体意外伤害保险</h2>
+          <div class="grid two">
+            <article class="card">
+              <h3>险种定位</h3>
+              <p>以团体为单位投保，保障外来的、突发的、非本意的、非疾病的意外伤害。</p>
+              <p class="muted">仅覆盖意外事故，不覆盖疾病和职业病，也不能替代工伤保险或免除雇主法定赔偿责任。</p>
+            </article>
+            <article class="card">
+              <h3>询价资料</h3>
+              <ul>
+                <li>营业执照、投保人员清单，含姓名、身份证号码、年龄、工种。</li>
+                <li>保险方案、上年承保及赔付情况、生产工艺流程、业务来源情况。</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="policy-board">
+            <article class="policy encourage">
+              <h3>鼓励承保</h3>
+              <p>职业类别 1-3 类且非劳务/人力资源公司人员；家庭自用车或机关企业非营业客车驾乘意外；1-3 类借款人意外；大中专以上学平险；近 3 年两率和小于 85% 且续保条件不变的多年续保业务。</p>
+            </article>
+            <article class="policy caution">
+              <h3>谨慎承保</h3>
+              <p>建筑施工人员、职业/工种不固定、4-6 类人员、劳务派遣人员占比超 50%、费率低于基准费率 50% 及以下、扩展急性病身故或疾病类附加险、近 3 年两率和 70%-98% 的多年续保业务。</p>
+            </article>
+            <article class="policy forbid">
+              <h3>禁止承保</h3>
+              <p>异地标的或无本地服务机构且不主导理赔的业务、全国收单传统业务；渔船船员、造修拆船、海上渔业、采石采矿爆破、油气钻勘开采、危化品制造、烟花爆竹火药装药、潜水、战地记者、特技演员、防爆警察、私营煤矿人员等。</p>
+            </article>
+          </div>
+
+          <aside class="note">
+            <strong>行业补充：</strong>团意险销售时应避免把“员工福利”包装成“企业责任转移”。对高风险职业、临时用工、外包人员和异地作业，应核对实际作业地点、职业类别、投保人数波动、历史事故和是否存在逆选择。
+          </aside>
+        </section>
+
+        <section id="workflow" class="section searchable">
+          <h2>承保作业流程建议</h2>
+          <ol class="timeline">
+            <li><b>确认需求和保险利益</b><span>核验投保人与保险标的之间的合法利益关系，避免无可保利益或利益不清。</span></li>
+            <li><b>收集资料</b><span>按险种收集营业执照、资产清单、人员清单、合同、工艺流程、历史赔付和业务来源材料。</span></li>
+            <li><b>风险查勘</b><span>对企财、工程、高风险责任和高风险职业业务进行现场或远程查勘，形成照片和风险整改建议。</span></li>
+            <li><b>核对政策边界</b><span>先判定鼓励、谨慎、禁止承保分类，再确认权限、费率、免赔、除外责任和附加条款。</span></li>
+            <li><b>校验再保能力</b><span>确认危险单位、累计责任、毛自留额、净自留额、分出比例、合约限额和自动承保能力。</span></li>
+            <li><b>出单与后续管理</b><span>出单后跟进防灾减损、资料归档、批改、续保条件和赔付表现，形成闭环。</span></li>
+          </ol>
+        </section>
+
+        <section id="sources" class="section searchable">
+          <h2>资料来源与补充依据</h2>
+          <p class="lead">本网页的 PPT 原始内容来自用户提供的《更新-非车险部培训课件（广东省分公司）.pptx》。补充内容参考以下公开资料和监管依据，正式业务执行仍应以公司现行制度、条款、费率规章及最新监管文件为准。</p>
+          <ul class="source-list">
+            <li><a href="https://www.nfra.gov.cn/cn/view/pages/governmentDetail.html?docId=1228568&generaltype=1&itemId=861" target="_blank" rel="noreferrer">《国家金融监督管理总局关于加强非车险业务监管有关事项的通知》</a>：非车险“报行合一”、费率费用、合规经营和市场行为监管补充依据。</li>
+            <li><a href="https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1228604&itemId=917" target="_blank" rel="noreferrer">国家金融监督管理总局发布说明</a>：非车险监管政策梳理、理性竞争、降本增效和提质扩面导向。</li>
+            <li><a href="https://www.npc.gov.cn/npc/c2/c183/c198/201905/t20190522_74168.html" target="_blank" rel="noreferrer">《中华人民共和国保险法》</a>：保险定义、保险利益、保险标的和保险合同基本规则。</li>
+            <li><a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202504/t20250402_531687.shtml" target="_blank" rel="noreferrer">《安全生产责任保险实施办法》</a>：责任保险、事故预防服务和高危行业风险管理参考。</li>
+            <li><a href="https://www.mem.gov.cn/gk/zcjd/202504/t20250402_518399.shtml" target="_blank" rel="noreferrer">应急管理部、金融监管总局答记者问</a>：安责险事故预防服务、主体责任和费用投入要求。</li>
+            <li><a href="https://www.gov.cn/gbgl/0e0dbcb8d96241c7b5b49bbbef811bed/files/022b0e1fa34143f08a1be5b277328834.pdf" target="_blank" rel="noreferrer">《再保险业务管理规定》公开文本</a>：自留责任、危险单位、再保险办理和业务管理要求。</li>
+            <li><a href="https://www.iachina.cn/" target="_blank" rel="noreferrer">中国保险行业协会公开资料</a>：财产险、责任险、风险减量服务和行业自律资料。</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>作者：毛宁 · 网页整理版供内部培训、业务学习和资料检索使用。</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
