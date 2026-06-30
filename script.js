@@ -2,8 +2,49 @@ const searchInput = document.querySelector("#searchInput");
 const searchableSections = [...document.querySelectorAll(".searchable")];
 const navLinks = [...document.querySelectorAll(".sidebar a")];
 const printBtn = document.querySelector("#printBtn");
+const authGate = document.querySelector("#authGate");
+const authForm = document.querySelector("#authForm");
+const authUser = document.querySelector("#authUser");
+const authPass = document.querySelector("#authPass");
+const authError = document.querySelector("#authError");
+const authHash = "43adec346203b6c57fc3197a835f12683c8bffbeff3a88d8e38c8b7f396ae1e9";
+const authStorageKey = "nonAutoInsuranceManualAuthenticated";
 
 const originalHtml = new Map(searchableSections.map((section) => [section, section.innerHTML]));
+
+function unlockPage() {
+  authGate.classList.add("is-unlocked");
+  document.body.classList.remove("is-locked");
+}
+
+async function sha256(value) {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+async function checkLogin(event) {
+  event.preventDefault();
+  authError.textContent = "";
+  const user = authUser.value.trim();
+  const pass = authPass.value;
+  const digest = await sha256(`${user}:${pass}`);
+  if (digest === authHash) {
+    sessionStorage.setItem(authStorageKey, "true");
+    unlockPage();
+    return;
+  }
+  authError.textContent = "账号或密码不正确，请重新输入。";
+  authPass.value = "";
+  authPass.focus();
+}
+
+document.body.classList.add("is-locked");
+if (sessionStorage.getItem(authStorageKey) === "true") {
+  unlockPage();
+} else {
+  authUser.focus();
+}
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -61,4 +102,5 @@ function updateActiveNav() {
 searchInput.addEventListener("input", runSearch);
 window.addEventListener("scroll", updateActiveNav, { passive: true });
 printBtn.addEventListener("click", () => window.print());
+authForm.addEventListener("submit", checkLogin);
 updateActiveNav();
