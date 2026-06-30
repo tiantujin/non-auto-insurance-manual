@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="authGate" class="auth-gate" role="dialog" aria-labelledby="authTitle" aria-modal="true">
+      <form id="authForm" class="auth-panel">
+        <p class="eyebrow">Private access</p>
+        <h2 id="authTitle">非车险培训行业指导手册</h2>
+        <p class="auth-copy">请输入账号和密码后继续访问。</p>
+        <label>
+          <span>账号</span>
+          <input id="authUser" type="text" autocomplete="username" required />
+        </label>
+        <label>
+          <span>密码</span>
+          <input id="authPass" type="password" autocomplete="current-password" required />
+        </label>
+        <p id="authError" class="auth-error" aria-live="polite"></p>
+        <button type="submit">进入手册</button>
+      </form>
+    </div>
+
     <header class="topbar">
       <div>
         <p class="eyebrow">内部培训资料网页整理版 · 2026</p>
