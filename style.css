@@ -104,6 +104,19 @@ button {
   cursor: pointer;
 }
 
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 6px;
+  padding: 8px 14px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
 .auth-gate {
   position: fixed;
   inset: 0;
@@ -532,6 +545,221 @@ tr:last-child th {
   font-weight: 700;
 }
 
+.manual-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f7fbff;
+}
+
+.manual-entry h3,
+.manual-entry p {
+  margin-bottom: 4px;
+}
+
+.manual-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 24px;
+  width: min(1680px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.manual-sidebar {
+  position: sticky;
+  top: 108px;
+  align-self: start;
+  max-height: calc(100vh - 130px);
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.manual-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.manual-stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f0f5f9;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.manual-stats b {
+  color: var(--blue);
+}
+
+.manual-nav {
+  display: grid;
+  gap: 3px;
+}
+
+.manual-nav a {
+  display: block;
+  border-radius: 6px;
+  padding: 7px 8px;
+  color: #40505f;
+  font-size: 13px;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.manual-nav a:hover {
+  background: #e8f2fb;
+  color: var(--blue);
+}
+
+.manual-nav .nav-l0,
+.manual-nav .nav-l1 {
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.manual-nav .nav-l2 {
+  padding-left: 16px;
+  font-weight: 800;
+}
+
+.manual-nav .nav-l3 {
+  padding-left: 28px;
+}
+
+.manual-main {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.manual-hero {
+  min-height: 300px;
+}
+
+.manual-content {
+  display: grid;
+  gap: 12px;
+}
+
+.manual-section {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(23, 33, 43, 0.05);
+  overflow: hidden;
+}
+
+.manual-section summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 54px;
+  padding: 13px 16px;
+  background: #f8fafc;
+  color: var(--ink);
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.manual-section summary span {
+  display: grid;
+  gap: 2px;
+}
+
+.manual-section summary small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.manual-section summary em {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.manual-l0 summary,
+.manual-l1 summary {
+  background: #e8f2fb;
+  color: var(--blue);
+  font-size: 18px;
+}
+
+.manual-l2 summary {
+  border-left: 4px solid var(--teal);
+}
+
+.manual-l3 summary {
+  border-left: 4px solid var(--blue);
+}
+
+.manual-l4 summary,
+.manual-l5 summary {
+  border-left: 4px solid #b8c7d6;
+}
+
+.manual-section-body {
+  padding: 16px 18px 18px;
+}
+
+.manual-section-body p,
+.manual-section-body li {
+  margin-bottom: 8px;
+}
+
+.manual-section-body ul {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 12px;
+}
+
+.manual-section-body h4 {
+  margin: 12px 0 8px;
+  color: var(--blue);
+  font-size: 15px;
+}
+
+.formula {
+  border-left: 4px solid var(--amber);
+  border-radius: 6px;
+  padding: 9px 12px;
+  background: #fff9ef;
+  font-weight: 800;
+}
+
+.manual-note-line {
+  border-left: 4px solid var(--teal);
+  border-radius: 6px;
+  padding: 9px 12px;
+  background: #effaf8;
+}
+
+.manual-section.is-hidden {
+  display: none;
+}
+
+.no-results {
+  color: var(--red);
+  font-weight: 800;
+}
+
 .policy-detail {
   margin-top: 14px;
   border: 1px solid var(--line);
@@ -608,6 +836,11 @@ mark {
     padding: 18px;
   }
 
+  .manual-layout {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
   .sidebar {
     position: static;
     max-height: none;
@@ -616,6 +849,16 @@ mark {
 
   .nav-title {
     grid-column: 1 / -1;
+  }
+
+  .manual-sidebar {
+    position: static;
+    max-height: 420px;
+  }
+
+  .manual-entry {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .hero,
