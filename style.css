@@ -532,6 +532,51 @@ tr:last-child th {
   font-weight: 700;
 }
 
+.policy-detail {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.policy-detail summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 54px;
+  padding: 14px 18px;
+  color: #223344;
+  background: #f0f5f9;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.policy-detail summary::after {
+  content: "+";
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--blue);
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.policy-detail[open] summary::after {
+  content: "-";
+}
+
+.detail-body {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
 footer {
   padding: 22px 28px 42px;
   color: var(--muted);
