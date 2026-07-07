@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>非车险政策宣导完整手册</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="policy-page">
+    <div id="authGate" class="auth-gate" role="dialog" aria-labelledby="authTitle" aria-modal="true">
+      <form id="authForm" class="auth-panel">
+        <p class="eyebrow">Private access</p>
+        <h2 id="authTitle">非车险政策宣导完整手册</h2>
+        <p class="auth-copy">请输入账号和密码后继续访问。</p>
+        <label>
+          <span>账号</span>
+          <input id="authUser" type="text" autocomplete="username" required />
+        </label>
+        <label>
+          <span>密码</span>
+          <input id="authPass" type="password" autocomplete="current-password" required />
+        </label>
+        <p id="authError" class="auth-error" aria-live="polite"></p>
+        <button type="submit">进入手册</button>
+      </form>
+    </div>
+
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">完整政策手册 · 原文结构化迁移</p>
+        <h1>非车险政策宣导完整手册</h1>
+      </div>
+      <div class="toolbar">
+        <a class="button-link" href="index.html">返回培训首页</a>
+        <label class="search">
+          <span>搜索全文</span>
+          <input id="policySearch" type="search" placeholder="输入险种、条款、承保政策、风险要素..." />
+        </label>
+        <button id="expandAllBtn" type="button">展开全部</button>
+        <button id="collapseAllBtn" type="button">折叠全部</button>
+        <button id="printBtn" type="button">打印/导出 PDF</button>
+      </div>
+    </header>
+
+    <div class="manual-layout">
+      <aside class="manual-sidebar">
+        <div class="nav-title">完整目录</div>
+        <div id="policyStats" class="manual-stats"></div>
+        <nav id="policyNav" class="manual-nav" aria-label="完整政策目录"></nav>
+      </aside>
+
+      <main class="manual-main">
+        <section class="hero section manual-hero">
+          <div>
+            <p class="eyebrow">Full manual</p>
+            <h2>从 Word 政策文档迁移为可检索、可折叠、可维护的网页手册</h2>
+            <p>
+              本页按原文目录顺序完整承载《非车险政策宣导(2).doc》的有效内容。内容以章节、折叠块、清单和原文段落方式呈现，便于快速定位，同时保留原文信息量。
+            </p>
+            <p class="author">作者：毛宁</p>
+          </div>
+          <dl class="stats">
+            <div><dt id="statSections">0</dt><dd>结构章节</dd></div>
+            <div><dt id="statLines">0</dt><dd>原文非空行</dd></div>
+            <div><dt id="statChars">0</dt><dd>字符数</dd></div>
+            <div><dt>100%</dt><dd>行级覆盖</dd></div>
+          </dl>
+        </section>
+
+        <section class="section manual-index">
+          <h2>内容覆盖说明</h2>
+          <p class="lead">本页由 `doc_extracted.txt` 自动结构化生成，原文每一条非空内容均归入对应章节。搜索会按章节过滤，命中章节会自动展开。</p>
+          <div class="grid three">
+            <article class="card">
+              <h3>保持完整</h3>
+              <p>定义、分类、承保条件、流程、清单、风险提示、公式和原文占位标题均保留。</p>
+            </article>
+            <article class="card">
+              <h3>网页化阅读</h3>
+              <p>章节采用可折叠模块，正文按标题、清单、段落和重点提示重排，避免简单长文堆叠。</p>
+            </article>
+            <article class="card">
+              <h3>可维护</h3>
+              <p>原文内容位于 `policy-data.js`，页面渲染逻辑位于 `policy-full.js`，后续替换文档可重新生成数据。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="policyContent" class="manual-content" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <footer>
+      <p>作者：毛宁 · 完整政策宣导网页手册</p>
+    </footer>
+
+    <script src="policy-data.js"></script>
+    <script src="policy-full.js"></script>
+  </body>
+</html>
