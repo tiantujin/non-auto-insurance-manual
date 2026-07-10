@@ -25,75 +25,55 @@
       </form>
     </div>
 
-    <header class="topbar">
+    <header class="topbar manual-topbar">
       <div>
-        <p class="eyebrow">完整政策手册 · 原文结构化迁移</p>
-        <h1>非车险政策宣导完整手册</h1>
+        <p class="eyebrow">Policy knowledge manual</p>
+        <h1>非车险政策知识手册</h1>
+        <p class="topbar-copy">基于最新《非车险政策宣导》文档重构，按章节、险种与政策主题分层检索。作者：毛宁</p>
       </div>
       <div class="toolbar">
-        <a class="button-link" href="index.html">返回培训首页</a>
         <label class="search">
           <span>搜索全文</span>
           <input id="policySearch" type="search" placeholder="输入险种、条款、承保政策、风险要素..." />
         </label>
-        <button id="expandAllBtn" type="button">显示全部</button>
-        <button id="collapseAllBtn" type="button">清空筛选</button>
+        <button id="navToggleBtn" type="button">目录</button>
+        <button id="resetBtn" type="button">清空筛选</button>
         <button id="backTopBtn" type="button">返回顶部</button>
         <button id="printBtn" type="button">打印/导出 PDF</button>
       </div>
     </header>
 
     <div class="manual-layout">
-      <aside class="manual-sidebar">
-        <div class="nav-title">完整目录</div>
-        <div id="policyStats" class="manual-stats"></div>
+      <aside id="manualSidebar" class="manual-sidebar">
+        <div class="nav-title">目录</div>
         <nav id="policyNav" class="manual-nav" aria-label="完整政策目录"></nav>
       </aside>
 
       <main class="manual-main">
-        <section class="hero section manual-hero">
+        <section class="section manual-intro">
           <div>
-            <p class="eyebrow">Full manual</p>
-            <h2>从 Word 政策文档迁移为可检索、可折叠、可维护的网页手册</h2>
-            <p>
-              本页按原文目录顺序完整承载《非车险政策宣导(2).doc》的有效内容。内容以章节、折叠块、清单和原文段落方式呈现，便于快速定位，同时保留原文信息量。
-            </p>
-            <p class="author">作者：毛宁</p>
-          </div>
-          <dl class="stats">
-            <div><dt id="statSections">0</dt><dd>结构章节</dd></div>
-            <div><dt id="statLines">0</dt><dd>原文非空行</dd></div>
-            <div><dt id="statChars">0</dt><dd>字符数</dd></div>
-            <div><dt>100%</dt><dd>行级覆盖</dd></div>
-          </dl>
-        </section>
-
-        <section class="section manual-index">
-          <h2>内容覆盖说明</h2>
-          <p class="lead">本页由 `doc_extracted.txt` 自动结构化生成，原文每一条非空内容均归入对应章节。搜索会按章节过滤，命中章节会自动展开。</p>
-          <div class="grid three">
-            <article class="card">
-              <h3>保持完整</h3>
-              <p>定义、分类、承保条件、流程、清单、风险提示、公式和原文占位标题均保留。</p>
-            </article>
-            <article class="card">
-              <h3>网页化阅读</h3>
-              <p>一级和二级目录用于定位，三级知识点以卡片展示，点击后用弹窗查看完整原文内容。</p>
-            </article>
-            <article class="card">
-              <h3>可维护</h3>
-              <p>原文内容位于 `policy-data.js`，页面渲染逻辑位于 `policy-full.js`，后续替换文档可重新生成数据。</p>
-            </article>
+            <p class="eyebrow">非车险政策知识手册</p>
+            <h2>按章节和业务模块查找政策原文</h2>
+            <p>页面保留 Word 文档中的有效内容，并依据标题样式、黄色/绿色高亮、加粗、编号和上下文语义重新整理为可检索卡片。点击卡片可查看对应主题的完整内容。</p>
           </div>
         </section>
 
         <section class="section">
           <div class="section-head">
             <div>
-              <h2>二级模块</h2>
-              <p class="lead">按险种和业务主题进入对应模块，下面的三级知识点卡片会随之过滤。</p>
+              <h2>一级章节</h2>
+              <p class="lead">先按章节过滤，再进入具体险种或业务模块。</p>
             </div>
-            <span class="count-pill"><b id="cardCount">0</b> 张知识卡片</span>
+          </div>
+          <div id="chapterGrid" class="chapter-grid" aria-label="一级章节"></div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2>二级模块</h2>
+              <p class="lead">按险种、政策、流程和管理主题进入对应模块。</p>
+            </div>
           </div>
           <div id="moduleGrid" class="module-grid" aria-label="二级目录模块"></div>
         </section>
@@ -101,11 +81,13 @@
         <section class="section">
           <div class="section-head">
             <div>
-              <h2>三级知识点卡片</h2>
-              <p class="lead">每张卡片对应原文中的三级或更细知识点。点击卡片打开弹窗，查看完整条款、编号、公式、金额、比例、年限和限制条件。</p>
+              <h2>主题卡片</h2>
+              <p class="lead">卡片依据绿色/黄色高亮、加粗标题、编号和语义边界生成。点击后查看完整原文内容。</p>
             </div>
+            <span class="count-pill"><b id="cardCount">0</b> 张卡片</span>
           </div>
           <div id="filterBar" class="filter-bar" aria-label="内容标签筛选"></div>
+          <div id="moduleIntro" class="module-intro-blocks"></div>
           <div id="knowledgeGrid" class="knowledge-grid" aria-live="polite"></div>
         </section>
       </main>
@@ -122,6 +104,10 @@
           <button id="modalClose" type="button" aria-label="关闭弹窗">关闭</button>
         </header>
         <div id="modalBody" class="modal-body"></div>
+        <footer class="modal-actions">
+          <button id="prevCardBtn" type="button">上一条</button>
+          <button id="nextCardBtn" type="button">下一条</button>
+        </footer>
       </div>
     </dialog>
 
@@ -129,7 +115,7 @@
       <p>作者：毛宁 · 完整政策宣导网页手册</p>
     </footer>
 
-    <script src="policy-data.js"></script>
+    <script src="manual-data.js"></script>
     <script src="policy-full.js"></script>
   </body>
 </html>
