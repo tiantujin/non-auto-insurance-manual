@@ -145,21 +145,8 @@ def is_module_heading(p: dict, chapter_title: str | None) -> bool:
     text = p["text"]
     if is_root_title(p) or is_chapter(p):
         return False
-    if chapter_title and chapter_title.startswith("第一章"):
-        return p["bold"] and (p["fontSize"] or 0) >= 14 and text in {
-            "企财险",
-            "工程险",
-            "责任险",
-            "船舶险",
-            "货运险",
-            "特种险",
-            "家财险",
-            "其他",
-        }
-    if chapter_title and chapter_title.startswith("第二章"):
-        return p["bold"] and (p["fontSize"] or 0) >= 14 and text in {"意外险", "健康险"}
-    if chapter_title and chapter_title.startswith("第三章"):
-        return p["bold"] and (p["fontSize"] or 0) >= 14 and text in {"信用保险", "保证保险"}
+    if p["pClass"] == "p3" and p["bold"] and (p["fontSize"] or 0) >= 16:
+        return True
     return False
 
 
@@ -198,6 +185,17 @@ def is_major_bold_card(text: str) -> bool:
     return len(text) <= 36 and any(term in text for term in major_terms)
 
 
+CHAPTER2_CARD_TITLES = {
+    "附加条款使用规则",
+    "保险金额",
+    "职业类别",
+    "团体业务核保规则",
+    "团体人身意外伤害保险",
+    "建筑施工人员团体意外伤害保险",
+    "意外险业务核保授权",
+}
+
+
 def is_card_heading(
     p: dict,
     chapter_title: str | None,
@@ -210,28 +208,12 @@ def is_card_heading(
     if is_module_heading(p, chapter_title) or is_chapter(p) or is_root_title(p):
         return False, ""
     if chapter_title.startswith("第二章"):
-        if p["background"] == "yellow":
-            return True, "黄色高亮"
+        if text in CHAPTER2_CARD_TITLES:
+            return True, "精修标题样式+语义识别"
         return False, ""
     if chapter_title.startswith("第一章"):
-        if p["background"] in {"green", "yellow"} and len(text) <= 90:
-            return True, f"{p['background']}高亮"
-        if p["bold"] and is_major_bold_card(text):
-            return True, "加粗短标题+语义判断"
-        if (
-            is_cn_heading(text)
-            and len(text) <= 34
-            and not looks_like_sentence_item(text)
-            and (
-                current_card is None
-                or module_title in {"船舶险", "货运险", "特种险"}
-                or (
-                    current_card["title"].strip("：:。").endswith(("业务范围", "核保要素"))
-                    and len(current_card["blocks"]) == 0
-                )
-            )
-        ):
-            return True, "中文括号编号+语义判断"
+        if p["pClass"] == "p4" and p["bold"] and (p["fontSize"] or 0) >= 14:
+            return True, "精修标题样式"
     if chapter_title.startswith("第三章"):
         return False, ""
     return False, ""
@@ -291,7 +273,7 @@ def make_block(p: dict) -> dict:
 
 def build_manual(paragraphs: list[dict]) -> dict:
     manual = {
-        "source": "非车险政策宣导(2).doc",
+        "source": "非车险政策宣导(4).doc",
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "paragraphCount": len(paragraphs),
         "chapters": [],
@@ -306,7 +288,6 @@ def build_manual(paragraphs: list[dict]) -> dict:
     current_module = None
     current_card = None
     root_seen = False
-    pending_other_module = None
 
     def close_card() -> None:
         nonlocal current_card
@@ -330,16 +311,8 @@ def build_manual(paragraphs: list[dict]) -> dict:
                 "standaloneBlocks": [],
             }
             manual["chapters"].append(current_chapter)
-            pending_other_module = None
             continue
         if current_chapter is None:
-            continue
-        if current_module and current_module["title"] == "其他" and text == "综合险":
-            close_card()
-            current_module["title"] = "其他 / 综合险"
-            current_module["basis"].append("相邻标题合并：原文“其他”后接“综合险”")
-            current_module["sourceLines"].append(p["sourceLine"])
-            pending_other_module = None
             continue
         if is_module_heading(p, current_chapter["title"]):
             close_card()
@@ -353,7 +326,6 @@ def build_manual(paragraphs: list[dict]) -> dict:
                 "cards": [],
             }
             current_chapter["modules"].append(current_module)
-            pending_other_module = current_module if text == "其他" else None
             continue
         if current_module is None:
             current_chapter["standaloneBlocks"].append(make_block(p))
@@ -403,7 +375,7 @@ def build_manual(paragraphs: list[dict]) -> dict:
                     "rawTitle": module["title"],
                     "sourceLine": module["sourceLine"],
                     "basis": ["二级标题无下级卡片，保留为占位卡片"],
-                    "summary": "原文仅保留标题或说明较少，网页中按原位置保留。",
+                    "summary": "该模块暂无下级标题，已作为独立主题保留。",
                     "tags": [],
                     "blocks": module["introBlocks"],
                 }
@@ -499,8 +471,8 @@ def write_reports(manual: dict, cov: dict) -> None:
         [
             "",
             "## 标题识别存疑清单",
-            "- “其他 / 综合险”：原文连续出现“其他”和“综合险”，已按上下文合并为一个二级模块，并在报告中保留原文痕迹。",
-            "- 企财再保合约后“承保能力打折扣的业务”“共保业务承保能力”疑似表格/图片标题，因转换后无表格数据，需人工对照 Word 原件确认。",
+            "- 暂未发现需人工确认的标题层级；已按新版 Word 标题样式识别一级章节、二级模块与主题卡片。",
+            "- 对未检测到下级主题标题的二级模块，已生成模块级卡片并保留其所在位置。",
             "",
             "## 删除的重复内容",
             "- 无。未主动删除任何疑似重复段落；即使“保险金额和保险价值的确定”出现近似重复，也按原文位置保留。",
