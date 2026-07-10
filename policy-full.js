@@ -253,12 +253,12 @@ function renderCards() {
               <em>${escapeHtml(card.module.title)}</em>
             </div>
             <h3>${highlighted(card.title)}</h3>
-            <p>${highlighted(card.summary || "原文仅保留标题，已按原位置保留。")}</p>
+            <p>${highlighted(card.summary || "该条目仅保留标题，已按原位置保留。")}</p>
             <div class="tag-row">
               ${
                 card.tags.length
                   ? card.tags.map((tag) => `<span class="tag ${tagClass(tag)}">${tag}</span>`).join("")
-                  : `<span class="tag">原文主题</span>`
+                  : `<span class="tag">主题</span>`
               }
             </div>
             <div class="knowledge-card-foot"><strong>${card.blocks.length} 段内容</strong></div>
@@ -315,7 +315,7 @@ function openModal(cardId) {
   state.activeCardId = cardId;
   const list = filteredCards();
   const index = list.findIndex((item) => item.id === cardId);
-  modalMeta.textContent = `${card.chapter.title} / ${card.module.title} · 原文 ${card.sourceLine}${card.blocks.length ? `-${card.blocks.at(-1).sourceLine}` : ""}`;
+  modalMeta.textContent = `${card.chapter.title} / ${card.module.title}`;
   modalTitle.innerHTML = highlighted(card.title);
   modalTags.innerHTML = card.tags.map((tag) => `<span class="tag ${tagClass(tag)}">${tag}</span>`).join("");
   if (card.blocks.length) {
@@ -326,7 +326,7 @@ function openModal(cardId) {
       })
       .join("");
   } else {
-    modalBody.innerHTML = `<section class="modal-block"><p class="muted">原文在此处仅保留标题，网页已按原章节位置保留该条目。</p></section>`;
+    modalBody.innerHTML = `<section class="modal-block"><p class="muted">此处仅保留标题，网页已按章节位置保留该条目。</p></section>`;
   }
   prevCardBtn.disabled = index <= 0;
   nextCardBtn.disabled = index < 0 || index >= list.length - 1;
