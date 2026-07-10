@@ -253,7 +253,7 @@ function renderCards() {
               <em>${escapeHtml(card.module.title)}</em>
             </div>
             <h3>${highlighted(card.title)}</h3>
-            <p>${highlighted(card.summary || "该条目仅保留标题，已按原位置保留。")}</p>
+            <p>${highlighted(card.summary || "该条目为模块占位，已按文档位置保留。")}</p>
             <div class="tag-row">
               ${
                 card.tags.length
