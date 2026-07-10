@@ -28,6 +28,8 @@ const modalBody = document.querySelector("#modalBody");
 const modalClose = document.querySelector("#modalClose");
 const prevCardBtn = document.querySelector("#prevCardBtn");
 const nextCardBtn = document.querySelector("#nextCardBtn");
+const moduleSection = document.querySelector("#moduleSection");
+const cardSection = document.querySelector("#cardSection");
 
 const filterDefs = [
   { id: "all", label: "全部" },
@@ -93,7 +95,7 @@ const cards = modules.flatMap((module) =>
     ...card,
     module,
     chapter: module.chapter,
-    searchText: `${card.title} ${card.summary} ${card.tags.join(" ")} ${card.blocks.map((block) => block.text).join(" ")}`,
+    searchText: `${module.chapter.title} ${module.title} ${card.title} ${card.summary} ${card.tags.join(" ")} ${card.blocks.map((block) => block.text).join(" ")}`,
   })),
 );
 
@@ -106,14 +108,25 @@ function filteredModules() {
 }
 
 function filteredCards() {
-  const query = state.query.trim().toLowerCase();
+  const query = normalizeQuery(state.query);
   return cards.filter((card) => {
     const chapterMatch = state.chapterId === "all" || card.chapter.id === state.chapterId;
     const moduleMatch = state.moduleId === "all" || card.module.id === state.moduleId;
     const filterMatch = state.filter === "all" || card.tags.includes(state.filter);
-    const queryMatch = !query || card.searchText.toLowerCase().includes(query);
+    const queryMatch = !query || normalizeQuery(card.searchText).includes(query);
     return chapterMatch && moduleMatch && filterMatch && queryMatch;
   });
+}
+
+function normalizeQuery(value) {
+  return String(value || "").toLowerCase().replace(/\s+/g, "");
+}
+
+function scrollToSection(element) {
+  if (!element) return;
+  const offset = 112;
+  const top = element.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: "smooth" });
 }
 
 function highlighted(value) {
@@ -248,10 +261,7 @@ function renderCards() {
                   : `<span class="tag">原文主题</span>`
               }
             </div>
-            <div class="knowledge-card-foot">
-              <span>原文 ${card.sourceLine}${card.blocks.length ? `-${card.blocks.at(-1).sourceLine}` : ""}</span>
-              <strong>${card.blocks.length} 段</strong>
-            </div>
+            <div class="knowledge-card-foot"><strong>${card.blocks.length} 段内容</strong></div>
           </article>
         `,
         )
@@ -358,7 +368,12 @@ backTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "
 navToggleBtn.addEventListener("click", () => manualSidebar.classList.toggle("is-open"));
 searchInput.addEventListener("input", () => {
   state.query = searchInput.value;
-  renderCards();
+  if (state.query.trim()) {
+    state.chapterId = "all";
+    state.moduleId = "all";
+  }
+  renderAll();
+  scrollToSection(cardSection);
 });
 chapterGrid.addEventListener("click", (event) => {
   const button = event.target.closest("[data-chapter]");
@@ -366,6 +381,7 @@ chapterGrid.addEventListener("click", (event) => {
   state.chapterId = button.dataset.chapter;
   state.moduleId = "all";
   renderAll();
+  scrollToSection(moduleSection);
 });
 moduleGrid.addEventListener("click", (event) => {
   const button = event.target.closest("[data-module]");
@@ -375,6 +391,7 @@ moduleGrid.addEventListener("click", (event) => {
   renderModuleGrid();
   renderModuleIntro();
   renderCards();
+  scrollToSection(cardSection);
 });
 filterBar.addEventListener("click", (event) => {
   const button = event.target.closest("[data-filter]");
@@ -395,6 +412,7 @@ nav.addEventListener("click", (event) => {
   }
   manualSidebar.classList.remove("is-open");
   renderAll();
+  scrollToSection(state.moduleId === "all" ? moduleSection : cardSection);
 });
 cardGrid.addEventListener("click", (event) => {
   const card = event.target.closest("[data-card]");
