@@ -267,6 +267,7 @@ function renderCards() {
         )
         .join("")
     : `<div class="section no-results">没有找到匹配的主题卡片。</div>`;
+  queueReveal(cardGrid.querySelectorAll(".knowledge-card"));
 }
 
 function renderAll() {
@@ -355,11 +356,38 @@ function resetFilters() {
   renderAll();
 }
 
+const revealObserver =
+  "IntersectionObserver" in window
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px" },
+      )
+    : null;
+
+function queueReveal(elements) {
+  elements.forEach((element, index) => {
+    element.classList.add("reveal-in");
+    element.style.setProperty("--reveal-delay", `${Math.min(index, 9) * 34}ms`);
+    if (!revealObserver) {
+      element.classList.add("is-visible");
+      return;
+    }
+    revealObserver.observe(element);
+  });
+}
+
 document.body.classList.add("is-locked");
 if (sessionStorage.getItem(authStorageKey) === "true") unlockPage();
 else authUser.focus();
 
 renderAll();
+queueReveal(document.querySelectorAll(".chapter-card, .module-card"));
 
 authForm.addEventListener("submit", checkLogin);
 printBtn.addEventListener("click", () => window.print());
